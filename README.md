@@ -354,7 +354,7 @@ new WUserClient(opt)
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-user/blob/master/web.html)]
 
 ```alias
-//Need to convert async and await in IE11, or test it in Chrome or Firefox.
+//Need to convert async, await and spread operator in IE11, or test it in Chrome or Firefox.
 
 //opt
 let opt = {
