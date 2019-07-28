@@ -141,7 +141,7 @@ function testModifyInfor(wo, inp) {
 }
 
 
-//WUserClient
+//new
 new WUserClient(opt)
     .then(async function(wo) {
         //console.log('funcs: ', wo)
@@ -165,10 +165,10 @@ new WUserClient(opt)
         //testMode
         let testMode = null
         // testMode = 'select'
-        // testMode = 'signUp'
+        testMode = 'signUp'
         // testMode = 'logIn and logOut'
         // testMode = 'changePW'
-        testMode = 'resetPW'
+        // testMode = 'resetPW'
         // testMode = 'modifyInfor'
 
 
@@ -230,7 +230,7 @@ new WUserClient(opt)
 
             let userModify = {
                 id: 'abc',
-                //email: 'abc@def.com',
+                //email: 'abc@def.com', //can change email
                 address: 'new city',
                 abc: 'def',
             }

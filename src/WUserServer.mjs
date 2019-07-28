@@ -136,6 +136,66 @@ let defExclude = ['<', '>']
  * @param {Array} [opt.routes=[]] 輸入擴充hapi routes陣列，預設[]
  * @returns {Object} 回傳通訊物件
  * @example
+ * import WUserServer from 'WUserServer/src/w-user-server.mjs'
+ *
+ *
+ * //webName
+ * let webName = 'User management system'
+ * // let webName = '使用者管理系統'
+ *
+ *
+ * //webUrl
+ * let webUrl = 'https://google.com'
+ *
+ *
+ * //webDescription
+ * let webDescription = "Let's do something and make it easier"
+ * // let webDescription = '讓我們一起做更簡單的事'
+ *
+ *
+ * //opt
+ * let opt = {
+ *     mongoUrl: 'mongodb://username:password@127.0.0.1:27017',
+ *     mongoDb: 'wuser',
+ *     mongoCl: 'users',
+ *     port: 8080,
+ *     apiName: 'api',
+ *     authUrl: 'http://localhost:8080/auth', //need webUrl+'/'+auth, use 'http://localhost:8080' in test case
+ *     salt: 'zLAUfSLDUuausd0Aasu912SDU', //generate it for sites
+ *     timeTokenExp: 30,
+ *
+ *     emSenderName: webName,
+ *     emSenderEmail: "sender's email", //email address for email sender
+ *     emSenderPW: "sender's password", //password for email sender
+ *
+ *     webName: webName,
+ *     webUrl: webUrl,
+ *     webDescription: webDescription,
+ *
+ *     // emLetterTeamMessage: `${webName}開發團隊 敬上`,
+ *     // emLetterDoNotReplayMessage: '本信由系統自動發信，請勿回信',
+ *     emLetterLinks: [{ name: 'Google', url: 'https://google.com' }],
+ *
+ *     // emSignUpTitle: '註冊驗證信',
+ *     // emSignUpHtml: `<p>親愛的 {name} 您好：</p><p>已收到您的註冊申請，請點擊下方連結進行驗證，確定驗證成功後即可登入。</p><p><a href="{urlCheckCode}" target="_blank">點擊此處驗證</a></p>`,
+ *
+ *     // emResetPWTitle: '重設密碼驗證信',
+ *     // emResetPWHtml: `<p>親愛的 {name} 您好：</p><p>已收到您的重設密碼申請，請點擊下方連結進行驗證，確定驗證成功後即可登入。</p><p><a href="{urlCheckCode}" target="_blank">點擊此處驗證</a></p>`,
+ *
+ *     // verifyWebMsgSuccess: '驗證成功',
+ *     // verifyWebMsgExpired: '驗證失敗',
+ *     // verifyWebMsgCount: '{s} 秒後自動前往網站',
+ *
+ *     funcs: {},
+ *     routes: [],
+ * }
+ *
+ *
+ * //new
+ * let wus = new WUserServer(opt)
+ * wus.on('all', function({ eventName, data }) {
+ *     console.log('all:' + eventName, ...data)
+ * })
  */
 function WUserServer(opt = {}) {
 
@@ -1674,7 +1734,7 @@ function WUserServer(opt = {}) {
     //merge opt
     opt = {
         ...opt,
-        // filterFuncs: async function(token, funcs) {
+        // filterFuncs: function(token, funcs) {
         //     return new Promise(function(resolve, reject) {
         //         funcs = funcs.filter(function(v) {
         //             return v.indexOf('Hide') < 0

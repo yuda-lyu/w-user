@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html charset=UTF-8" />
+        <title>w-user-client</title>
+
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@babel/polyfill/dist/polyfill.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/wsemi/dist/wsemi.umd.js"></script>
+        
+        <script src="dist/w-user-client.umd.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/w-jsonview-tree/dist/w-jsonview-tree.umd.js"></script>
+        <script>
+            let jv=window['w-jsonview-tree']
+            function logData(title,data){
+                let id='c'+wsemi.genID()
+                let s='<div style="margin:10px;"><div style="display:inline-block; vertical-align:top; margin-right:5px; color:#62f;">'+title+'</div><div id="'+id+'" style="display:inline-block; vertical-align:top;"></div></div>'
+                document.querySelector('body').insertAdjacentHTML('beforeend', s)
+                let ele=document.querySelector('#'+id)
+                if(data){
+                    if(wsemi.isnum(data)){
+                        ele.innerHTML=data
+                    }
+                    else{
+                        jv(data, ele, {expanded:true})
+                        ele.style.marginTop='-4px'
+                    }
+                }
+            }
+        </script>
+        
+        <script>
+
+
+            //opt
+            let opt = {
+                url: 'http://localhost:8080/api',
+                token: '*',
+                error: function(err) {
+                    logData('client web: error:', err)
+                },
+                reconn: function() {
+                    logData('client web: reconn')
+                },
+            }
+
+
+            function testSelect(wo, inp) {
+
+                return wo.select(inp)
+                    .then(function(msg) {
+                        logData('select then: ', msg)
+                    })
+                    .catch(function(err) {
+                        logData('select catch: ', err)
+                    })
+
+            }
+
+
+            function testSignUp(wo, user) {
+
+                wo.signUp(user)
+                    .then(function(msg) {
+                        logData('signUp then: ', msg)
+                    })
+                    .catch(function(err) {
+                        logData('signUp catch: ', err)
+                    })
+
+            }
+
+
+            async function testLogIn(wo, user) {
+                let token = null
+
+                await wo.logIn(user)
+                    .then(function(msg) {
+                        logData('logIn then: ', msg)
+                        token = msg.msg
+                    })
+                    .catch(function(err) {
+                        logData('logIn catch: ', err)
+                    })
+
+                return token
+            }
+
+
+            function testIsValidToken(wo, token) {
+
+                return wo.isValidToken(token)
+                    .then(function(msg) {
+                        logData('isValidToken then: ', msg.state === 'success', msg)
+                    })
+                    .catch(function(err) {
+                        logData('isValidToken catch: ', err)
+                    })
+
+            }
+
+
+            function testRefreshTokenExp(wo, token) {
+
+                return wo.refreshTokenExp(token)
+                    .then(function(msg) {
+                        logData('refreshTokenExp then: ', msg.state === 'success', msg)
+                    })
+                    .catch(function(err) {
+                        logData('refreshTokenExp catch: ', err)
+                    })
+
+            }
+
+
+            function testLogOut(wo, token) {
+
+                return wo.logOut(token)
+                    .then(function(msg) {
+                        logData('logOut then: ', msg.state === 'success', msg)
+                    })
+                    .catch(function(err) {
+                        logData('logOut catch: ', err)
+                    })
+
+            }
+
+
+            function testChangePW(wo, user) {
+
+                return wo.changePW(user)
+                    .then(function(msg) {
+                        logData('changePW then: ', msg.state === 'success', msg)
+                    })
+                    .catch(function(err) {
+                        logData('changePW catch: ', err)
+                    })
+
+            }
+
+
+            function testResetPW(wo, user) {
+
+                return wo.resetPW(user)
+                    .then(function(msg) {
+                        logData('resetPW then: ', msg.state === 'success', msg)
+                    })
+                    .catch(function(err) {
+                        logData('resetPW catch: ', err)
+                    })
+
+            }
+
+
+            function testModifyInfor(wo, inp) {
+
+                return wo.modifyInfor(inp)
+                    .then(function(msg) {
+                        logData('modifyInfor then: ', msg.state === 'success', msg)
+                    })
+                    .catch(function(err) {
+                        logData('modifyInfor catch: ', err)
+                    })
+
+            }
+
+
+            //new
+            let WUserClient = window['w-user-client']
+            new WUserClient(opt)
+                .then(async function(wo) {
+                    logData('funcs: ', wo)
+
+                    //使用者之密碼明碼, 記得於前端需先偵測是否8位以上, 且需含英文大小寫與數字, 傳送至伺服器前需先編碼如用sha512, 減少被盜用後直接洩漏明碼
+                    let pw1 = 'ABCdef123456'
+                    let pw2 = '123456XYZabc'
+                    let pwEnc = pw1
+                    let pwEncNew = pw2
+
+                    //user
+                    let user = {
+                        name: 'user',
+                        pwEnc: pwEnc,
+                        email: 'firsemisphere@gmail.com', //your@email //change to user's email
+                    }
+
+                    //token
+                    let token = null
+
+                    //testMode
+                    let testMode = null
+                    // testMode = 'select'
+                    testMode = 'signUp'
+                    // testMode = 'logIn and logOut'
+                    // testMode = 'changePW'
+                    // testMode = 'resetPW'
+                    // testMode = 'modifyInfor'
+
+
+                    //select
+                    if (testMode === 'select') {
+
+                        token = await testLogIn(wo, user)
+
+                        let find = {}
+                        await testSelect(wo, { token, find })
+
+                        await testLogOut(wo, token)
+
+                    }
+
+
+                    //signUp
+                    if (testMode === 'signUp') {
+                        testSignUp(wo, user)
+                    }
+
+
+                    //logIn and logOut
+                    if (testMode === 'logIn and logOut') {
+
+                        token = await testLogIn(wo, user) //get token
+
+                        await testIsValidToken(wo, token) //true
+
+                        await testRefreshTokenExp(wo, token) //true
+
+                        await testLogIn(wo, user) //get the same token, for multiple login
+
+                        await testLogOut(wo, token) //true
+
+                        await testIsValidToken(wo, token) //false
+
+                        await testRefreshTokenExp(wo, token) //false
+
+                    }
+
+
+                    //changePW
+                    if (testMode === 'changePW') {
+                        await testChangePW(wo, { pwEncNew, ...user })
+                    }
+
+
+                    //resetPW
+                    if (testMode === 'resetPW') {
+                        await testResetPW(wo, { pwEncNew, ...user })
+                    }
+
+
+                    //modifyInfor
+                    if (testMode === 'modifyInfor') {
+
+                        token = await testLogIn(wo, user) //get token
+
+                        let userModify = {
+                            id: 'abc',
+                            //email: 'abc@def.com', //can change email
+                            address: 'new city',
+                            abc: 'def',
+                        }
+
+                        await testModifyInfor(wo, { token, user: userModify })
+
+                    }
+
+
+                })
+                .catch(function(err) {
+                    logData('client web: catch: ', err)
+                })
+
+
+        </script>
+
+    </head>
+
+    <body>
+    </body>
+
+</html>

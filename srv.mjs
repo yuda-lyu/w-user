@@ -1,6 +1,5 @@
 import WUserServer from './src/WUserServer.mjs'
 //import WUserServer from './dist/w-user-server.umd.js'
-//import _ from 'lodash'
 import fs from 'fs'
 
 

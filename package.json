@@ -1,12 +1,12 @@
 {
   "name": "w-user",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple server for users in nodejs and browser, like a simple SSO.",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
     "dayjs": "^1.8.15",
     "nodemailer": "^6.3.0",
-    "w-comor-hapi": "^1.0.6",
+    "w-comor-hapi": "^1.0.7",
     "w-email": "^1.0.3",
     "w-orm-mongodb": "^1.1.0"
   },
@@ -46,7 +46,7 @@
     "rollup-plugin-vue": "^5.0.1",
     "rollup-plugin-vue-template-compiler": "^1.0.3",
     "vue-template-compiler": "^2.6.10",
-    "w-converws": "^1.0.2",
+    "w-converws": "^1.0.3",
     "wsemi": "^1.2.1"
   },
   "scripts": {
