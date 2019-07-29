@@ -5,7 +5,7 @@ import map from 'lodash/map'
 import get from 'lodash/get'
 import concat from 'lodash/concat'
 import join from 'lodash/join'
-import wrap from 'lodash/wrap'
+//import wrap from 'lodash/wrap'
 import pick from 'lodash/pick'
 import dayjs from 'dayjs' //rollup編譯時得剔除dayjs
 import genPm from 'wsemi/src/genPm.mjs'
@@ -23,6 +23,7 @@ import ispint from 'wsemi/src/ispint.mjs'
 import istimeTZ from 'wsemi/src/istimeTZ.mjs'
 import isEmail from 'wsemi/src/isEmail.mjs'
 import str2sha512 from 'wsemi/src/str2sha512.mjs'
+import pm2resolve from 'wsemi/src/pm2resolve.mjs'
 import HtServer from 'w-comor-hapi/src/HtServer.mjs' //rollup編譯時得剔除@hapi/hapi
 import WOrm from 'w-orm-mongodb/src/WOrmMongodb.mjs' //rollup編譯時得剔除mongodb與stream
 import WEmail from 'w-email/src/WEmail.mjs' //rollup編譯時得剔除nodemailer
@@ -56,23 +57,6 @@ function getError(msg = null) {
         state: 'error',
         msg: msg,
     }
-}
-
-
-function pm2resolve(f) {
-    return wrap(f, function(func, ...args) {
-        let pm = genPm()
-
-        func(...args)
-            .then(function(msg) {
-                pm.resolve(getSuccess(msg))
-            })
-            .catch(function(err) {
-                pm.resolve(getError(err))
-            })
-
-        return pm
-    })
 }
 
 
@@ -214,20 +198,23 @@ function WUserServer(opt = {}) {
 
 
     //pmWithEmit
-    function pmWithEmit(f, eventName = null) {
-        return wrap(f, function(func, ...args) {
+    function pmWithEmit(fn, eventName = null) {
+        return function() {
             let pm = genPm()
+
+            //args
+            let args = cloneDeep(arguments) //因物件記憶體同區, 進函式之後被更改皆會有影響, 等then或catch結束, 原本函數的輸入數據會變成已變更數據
 
             function core(msg) {
                 if (eventName) {
                     eeEmit(eventName, {
-                        input: [...args],
+                        input: args,
                         output: msg,
                     })
                 }
             }
 
-            func(...args)
+            fn.apply(this, arguments)
                 .then(function(msg) {
                     core(msg)
                     pm.resolve(msg)
@@ -238,8 +225,34 @@ function WUserServer(opt = {}) {
                 })
 
             return pm
-        })
+        }
     }
+    // function pmWithEmit(f, eventName = null) {
+    //     return wrap(f, function(func, ...args) {
+    //         let pm = genPm()
+
+    //         function core(msg) {
+    //             if (eventName) {
+    //                 eeEmit(eventName, {
+    //                     input: [...args],
+    //                     output: msg,
+    //                 })
+    //             }
+    //         }
+
+    //         func(...args)
+    //             .then(function(msg) {
+    //                 core(msg)
+    //                 pm.resolve(msg)
+    //             })
+    //             .catch(function(err) {
+    //                 core(err)
+    //                 pm.resolve(err)
+    //             })
+
+    //         return pm
+    //     })
+    // }
 
 
     //cloneDeep
