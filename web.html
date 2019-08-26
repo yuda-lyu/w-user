@@ -169,7 +169,7 @@
             }
 
 
-            //new
+            //new, Need to convert async, await and spread operator in IE11, or test it in Chrome or Firefox.
             let WUserClient = window['w-user-client']
             new WUserClient(opt)
                 .then(async function(wo) {
