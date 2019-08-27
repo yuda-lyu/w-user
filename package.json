@@ -1,14 +1,14 @@
 {
   "name": "w-user",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple server for users in nodejs and browser, like a simple SSO.",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
     "dayjs": "^1.8.15",
     "nodemailer": "^6.3.0",
-    "w-comor-hapi": "^1.0.7",
-    "w-email": "^1.0.3",
-    "w-orm-mongodb": "^1.1.1"
+    "w-comor-hapi": "^1.0.11",
+    "w-email": "^1.0.9",
+    "w-orm-mongodb": "^1.1.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -20,7 +20,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "@babel/runtime": "^7.5.5",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.0.3",
     "core-js": "^3.2.1",
     "docdash": "^1.1.1",
     "eslint": "^6.2.2",
@@ -46,8 +46,8 @@
     "rollup-plugin-vue": "^5.0.1",
     "rollup-plugin-vue-template-compiler": "^1.0.3",
     "vue-template-compiler": "^2.6.10",
-    "w-converws": "^1.0.11",
-    "wsemi": "^1.2.19"
+    "w-converws": "^1.0.15",
+    "wsemi": "^1.2.21"
   },
   "scripts": {
     "test": "mocha --require @babel/register",
