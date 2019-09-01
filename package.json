@@ -1,6 +1,6 @@
 {
   "name": "w-user",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A simple server for users in nodejs and browser, like a simple SSO.",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
@@ -50,7 +50,7 @@
     "wsemi": "^1.2.25"
   },
   "scripts": {
-    "test": "mocha --require @babel/register",
+    "test": "./node_modules/.bin/mocha --require @babel/register",
     "deploy": "gh-pages -d docs"
   },
   "repository": {
