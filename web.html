@@ -13,24 +13,9 @@
         
         <script src="dist/w-user-client.umd.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/w-jsonview-tree/dist/w-jsonview-tree.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/w-consolelog/dist/w-consolelog.umd.js"></script>
         <script>
-            let jv=window['w-jsonview-tree']
-            function logData(title,data){
-                let id='c'+wsemi.genID()
-                let s='<div style="margin:10px;"><div style="display:inline-block; vertical-align:top; margin-right:5px; color:#62f;">'+title+'</div><div id="'+id+'" style="display:inline-block; vertical-align:top;"></div></div>'
-                document.querySelector('body').insertAdjacentHTML('beforeend', s)
-                let ele=document.querySelector('#'+id)
-                if(data){
-                    if(wsemi.isnum(data)){
-                        ele.innerHTML=data
-                    }
-                    else{
-                        jv(data, ele, {expanded:true})
-                        ele.style.marginTop='-4px'
-                    }
-                }
-            }
+            let logData=window['w-consolelog']
         </script>
         
         <script>
