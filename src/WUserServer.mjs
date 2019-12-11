@@ -20,12 +20,13 @@ import isobj from 'wsemi/src/isobj.mjs'
 import iseobj from 'wsemi/src/iseobj.mjs'
 import isarr from 'wsemi/src/isarr.mjs'
 import ispint from 'wsemi/src/ispint.mjs'
+import isfun from 'wsemi/src/isfun.mjs'
 import istimeTZ from 'wsemi/src/istimeTZ.mjs'
 import isEmail from 'wsemi/src/isEmail.mjs'
 import str2sha512 from 'wsemi/src/str2sha512.mjs'
 import pm2resolve from 'wsemi/src/pm2resolve.mjs'
 import HtServer from 'w-comor-hapi/src/HtServer.mjs' //rollup編譯時得剔除@hapi/hapi
-import WOrm from 'w-orm-mongodb/src/WOrmMongodb.mjs' //rollup編譯時得剔除mongodb與stream
+//import WOrm from 'w-orm-mongodb/src/WOrmMongodb.mjs' //rollup編譯時得剔除mongodb與stream
 import WEmail from 'w-email/src/WEmail.mjs' //rollup編譯時得剔除nodemailer
 import emLetterHtml from './emLetterHtml.mjs'
 import emSignUpHtml from './emSignUpHtml.mjs'
@@ -88,9 +89,8 @@ let defExclude = ['<', '>']
  *
  * @class
  * @param {Object} [opt={}] 輸入設定物件，預設{}
- * @param {String} [opt.mongoUrl='mongodb://127.0.0.1:27017'] 輸入連接資料庫字串，預設'mongodb://127.0.0.1:27017'
- * @param {String} [opt.mongoDb='wuser'] 輸入使用資料庫名稱字串，預設'wuser'
- * @param {String} [opt.mongoCl='users'] 輸入使用資料表名稱字串，預設'users'
+ * @param {Object} [opt.orm={}] 輸入操作資料庫物件，預設{}
+ * @param {Object} [opt.serverHapi={}] 輸入hapi伺服器物件，若提供，本服務將自動加入api至route。使用外部hapi伺服器時，需開啟跨域功能，或是使用nginx反向代理轉入api請求
  * @param {Integer} [opt.port=8080] 輸入Hapi伺服器所在port整數，預設8080
  * @param {String} [opt.apiName='api'] 輸入Hapi伺服器api接口名稱字串，預設'api'
  * @param {String} [opt.authUrl='http://localhost:8080/auth'] 輸入Hapi伺服器外部連入驗證網址字串，末端api路徑需為auth，預設'http://localhost:8080/auth'
@@ -137,11 +137,17 @@ let defExclude = ['<', '>']
  * // let webDescription = '讓我們一起做更簡單的事'
  *
  *
+ * //orm
+ * let orm = WOrmMongodb({
+ *     url: 'mongodb://username:password@127.0.0.1:27017',
+ *     db: 'wuser',
+ *     cl: 'users',
+ * })
+ *
+ *
  * //opt
  * let opt = {
- *     mongoUrl: 'mongodb://username:password@127.0.0.1:27017',
- *     mongoDb: 'wuser',
- *     mongoCl: 'users',
+ *     orm,
  *     port: 8080,
  *     apiName: 'api',
  *     authUrl: 'http://localhost:8080/auth', //need webUrl+'/'+auth, use 'http://localhost:8080' in test case
@@ -260,15 +266,6 @@ function WUserServer(opt = {}) {
 
 
     //default
-    if (!isestr(opt.mongoUrl)) {
-        opt.mongoUrl = 'mongodb://127.0.0.1:27017'
-    }
-    if (!isestr(opt.mongoDb)) {
-        opt.mongoDb = 'wuser'
-    }
-    if (!isestr(opt.mongoCl)) {
-        opt.mongoCl = 'users'
-    }
     if (!ispint(opt.port)) {
         opt.port = 8080
     }
@@ -351,14 +348,17 @@ function WUserServer(opt = {}) {
     if (!isarr(opt.routes)) {
         opt.routes = []
     }
+    let bfSelect = isfun(get(opt, 'orm.select', null))
+    let bfInsert = isfun(get(opt, 'orm.insert', null))
+    let bfSave = isfun(get(opt, 'orm.save', null))
+    if (!bfSelect || !bfInsert || !bfSave) {
+        console.log('invalid orm')
+        return ee
+    }
 
 
-    //worm
-    let worm = WOrm({
-        url: opt.mongoUrl,
-        db: opt.mongoDb,
-        cl: opt.mongoCl,
-    })
+    //worm, need select insert save
+    let worm = opt.orm
 
 
     //schema
@@ -461,12 +461,12 @@ function WUserServer(opt = {}) {
             exclude: [],
             canModify: false,
         },
-        data: {
-            type: 'Object',
-            public: false,
+        remark: {
+            type: 'String', //'Object',
+            public: true,
             necessary: false,
             exclude: [],
-            canModify: false,
+            canModify: true,
         },
         active: {
             type: 'String', //activeYes|activeNo
@@ -920,7 +920,7 @@ function WUserServer(opt = {}) {
             return pm
         }
 
-        pm.resolve('success')
+        pm.resolve('ok')
         return pm
     }
     let logOutR = pm2resolve(logOut)
@@ -1050,7 +1050,7 @@ function WUserServer(opt = {}) {
 
             //check
             if (iMinutes > 0) {
-                pm.resolve('success')
+                pm.resolve('ok')
             }
             else if (iMinutes > opt.timeTokenExp) {
                 console.log('verifyTokenExp error:', 'iMinutes=' + iMinutes, '>', 'timeTokenExp=' + opt.timeTokenExp)
@@ -1102,7 +1102,7 @@ function WUserServer(opt = {}) {
             return pm
         }
 
-        pm.resolve('success')
+        pm.resolve('ok')
         return pm
     }
     let isValidTokenR = pm2resolve(isValidToken)
@@ -1157,7 +1157,7 @@ function WUserServer(opt = {}) {
             return pm
         }
 
-        pm.resolve('success')
+        pm.resolve('ok')
         return pm
     }
     let refreshTokenExpR = pm2resolve(refreshTokenExp)
@@ -1269,7 +1269,7 @@ function WUserServer(opt = {}) {
             return pm
         }
 
-        pm.resolve('success')
+        pm.resolve('ok')
         return pm
     }
     let changePWR = pm2resolve(changePW)
@@ -1351,7 +1351,7 @@ function WUserServer(opt = {}) {
             return pm
         }
 
-        pm.resolve('success')
+        pm.resolve('ok')
         return pm
     }
     let resetPWR = pm2resolve(resetPW)
@@ -1412,7 +1412,7 @@ function WUserServer(opt = {}) {
             return pm
         }
 
-        pm.resolve('success')
+        pm.resolve('ok')
         return pm
     }
     let modifyInforR = pm2resolve(modifyInfor)
@@ -1544,7 +1544,7 @@ function WUserServer(opt = {}) {
          * @param {Object} [inp.find={}] 輸入查詢物件，預設{}
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，於msg為使用者資料陣列，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'select': function(inp) {
+        select: function(inp) {
             return pmWithEmit(selectPublicR, 'selectPublic')(inp)
         },
 
@@ -1571,7 +1571,7 @@ function WUserServer(opt = {}) {
          * @param {String} [user.position=''] 輸入職位字串
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，於msg顯示使用者id，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'signUp': function(user) {
+        signUp: function(user) {
             return pmWithEmit(signUpR, 'signUp')(user)
         },
 
@@ -1596,7 +1596,7 @@ function WUserServer(opt = {}) {
          * @param {String} user.pwEnc 輸入密碼加密後字串
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，於msg顯示使用者token，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'logIn': function(user) {
+        logIn: function(user) {
             return pmWithEmit(logInR, 'logIn')(user)
         },
 
@@ -1611,7 +1611,7 @@ function WUserServer(opt = {}) {
          * @param {String} token 輸入使用者token字串
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'refreshTokenExp': function(token) {
+        refreshTokenExp: function(token) {
             return pmWithEmit(refreshTokenExpR, 'refreshTokenExp')(token)
         },
 
@@ -1626,7 +1626,7 @@ function WUserServer(opt = {}) {
          * @param {String} token 輸入使用者token字串
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'isValidToken': function(token) {
+        isValidToken: function(token) {
             return pmWithEmit(isValidTokenR, 'isValidToken')(token)
         },
 
@@ -1641,7 +1641,7 @@ function WUserServer(opt = {}) {
          * @param {String} token 輸入使用者token字串
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'logOut': function(token) {
+        logOut: function(token) {
             return pmWithEmit(logOutR, 'logOut')(token)
         },
 
@@ -1660,7 +1660,7 @@ function WUserServer(opt = {}) {
          * @param {String} user.pwEnc 輸入密碼加密後字串
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'changePW': function(user) {
+        changePW: function(user) {
             return pmWithEmit(changePWR, 'changePW')(user)
         },
 
@@ -1681,7 +1681,7 @@ function WUserServer(opt = {}) {
          * @param {String} user.pwEncNew 輸入新密碼加密後字串
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'resetPW': function(user) {
+        resetPW: function(user) {
             return pmWithEmit(resetPWR, 'resetPW')(user)
         },
 
@@ -1696,7 +1696,7 @@ function WUserServer(opt = {}) {
          * @param {Object} [inp.user={}] 輸入使用者資訊物件，預設{}
          * @returns {Promise} 回傳Promise，resolve回傳物件，成功則state為'success'，失敗則state為'error'，於msg顯示錯誤訊息，無reject
          */
-        'modifyInfor': function(inp) {
+        modifyInfor: function(inp) {
             return pmWithEmit(modifyInforR, 'modifyInfor')(inp)
         },
 
@@ -1759,8 +1759,8 @@ function WUserServer(opt = {}) {
             //console.log(`Server[port:${opt.port}] now clients: ${clients.length}`)
             eeEmit('clientChange', clients.length, clients)
         },
-        funcs: funcs,
-        routes: routes,
+        funcs,
+        routes,
     }
 
 

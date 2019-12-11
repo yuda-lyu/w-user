@@ -171,10 +171,10 @@ import HtClient from 'w-comor-hapi/src/HtClient.mjs'
  *         //testMode
  *         let testMode = null
  *         // testMode = 'select'
- *         // testMode = 'signUp'
+ *         testMode = 'signUp'
  *         // testMode = 'logIn and logOut'
  *         // testMode = 'changePW'
- *         testMode = 'resetPW'
+ *         // testMode = 'resetPW'
  *         // testMode = 'modifyInfor'
  *
  *
@@ -238,7 +238,7 @@ import HtClient from 'w-comor-hapi/src/HtClient.mjs'
  *                 id: 'abc',
  *                 //email: 'abc@def.com', //can change email
  *                 address: 'new city',
- *                 abc: 'def',
+ *                 abc: 'def', //can not add abc
  *             }
  *
  *             await testModifyInfor(wo, { token, user: userModify })

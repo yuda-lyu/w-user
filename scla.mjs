@@ -4,7 +4,7 @@ import fs from 'fs'
 
 
 //data
-let j = fs.readFileSync('D:\\開源-Javascript-w-user\\data.txt', 'utf8')
+let j = fs.readFileSync('D:\\開源-JS-006-4-w-user\\data.txt', 'utf8')
 let data = JSON.parse(j)
 
 
@@ -232,7 +232,7 @@ new WUserClient(opt)
                 id: 'abc',
                 //email: 'abc@def.com', //can change email
                 address: 'new city',
-                abc: 'def',
+                abc: 'def', //can not add abc
             }
 
             await testModifyInfor(wo, { token, user: userModify })
