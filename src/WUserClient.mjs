@@ -1,13 +1,13 @@
-import HtClient from 'w-comor-hapi/src/HtClient.mjs'
-//import HtClient from 'w-comor-hapi/dist/ht-client.umd'
+import WComorHapiClient from 'w-comor-hapi/src/WComorHapiClient.mjs'
+//import WComorHapiClient from 'w-comor-hapi/dist/w-comor-hapi-client.umd'
 
 
 /**
- * 建立對使用者Hapi伺服器的客戶端(Node.js與Browser)物件，直接繼承於HtClient
+ * 建立對使用者Hapi伺服器的客戶端(Node.js與Browser)物件，直接繼承於WComorHapiClient
  *
- * Inherit: {@link https://yuda-lyu.github.io/w-comor-hapi/global.html HtClient}
+ * Inherit: {@link https://yuda-lyu.github.io/w-comor-hapi/global.html WComorHapiClient}
  *
- * @see {@link https://yuda-lyu.github.io/w-comor-hapi/global.html HtClient}
+ * @see {@link https://yuda-lyu.github.io/w-comor-hapi/global.html WComorHapiClient}
  *
  * @class
  * @example
@@ -251,17 +251,17 @@ import HtClient from 'w-comor-hapi/src/HtClient.mjs'
  *         console.log('client nodejs: catch: ', err)
  *     })
  */
-let WUserClient = HtClient
+let WUserClient = WComorHapiClient
 
 
 //使用@babel/plugin-transform-runtime時, 仍假定node_modules內已編譯成ES5, 各套件已自帶regeneratorRuntime
-//若引用HtClient.mjs內含async與await時, 且專案套件內並無使用async與await, 將導致babel編譯出需regeneratorRuntime語法(針對HtClient.mjs), 但專案套件內實際並沒提供regeneratorRuntime的函式, 故會有regeneratorRuntime is not defined
+//若引用WComorHapiClient.mjs內含async與await時, 且專案套件內並無使用async與await, 將導致babel編譯出需regeneratorRuntime語法(針對WComorHapiClient.mjs), 但專案套件內實際並沒提供regeneratorRuntime的函式, 故會有regeneratorRuntime is not defined
 //下方語法為加入無用async語法, 使專案套件內因babel編譯而提供regeneratorRuntime函式, 實際亦不需使用@babel/plugin-transform-runtime, 應該是提供@babel/runtime編譯偵測可自動加入regeneratorRuntime函式
 // async function forRegeneratorRuntime() {}
 // WUserClient.forRegeneratorRuntime = forRegeneratorRuntime
 
 
-//目前已針對HtClient.mjs重新處理, 已不含async與await, 故此處程式碼亦不需加入無用async語法
+//目前已針對WComorHapiClient.mjs重新處理, 已不含async與await, 故此處程式碼亦不需加入無用async語法
 
 
 export default WUserClient

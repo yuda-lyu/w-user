@@ -25,7 +25,7 @@ import istimeTZ from 'wsemi/src/istimeTZ.mjs'
 import isEmail from 'wsemi/src/isEmail.mjs'
 import str2sha512 from 'wsemi/src/str2sha512.mjs'
 import pm2resolve from 'wsemi/src/pm2resolve.mjs'
-import HtServer from 'w-comor-hapi/src/HtServer.mjs' //rollup編譯時得剔除@hapi/hapi
+import WComorHapiServer from 'w-comor-hapi/src/WComorHapiServer.mjs' //rollup編譯時得剔除@hapi/hapi
 //import WOrm from 'w-orm-mongodb/src/WOrmMongodb.mjs' //rollup編譯時得剔除mongodb與stream
 import WEmail from 'w-email/src/WEmail.mjs' //rollup編譯時得剔除nodemailer
 import emLetterHtml from './emLetterHtml.mjs'
@@ -1765,7 +1765,7 @@ function WUserServer(opt = {}) {
 
 
     //new
-    new HtServer(opt)
+    new WComorHapiServer(opt)
 
 
     return ee

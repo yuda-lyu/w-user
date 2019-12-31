@@ -5,7 +5,7 @@ import WOrmReladb from 'w-orm-reladb/src/WOrmReladb.mjs'
 
 
 //ad
-let j = fs.readFileSync('D:\\開源-JS-006-4-w-user\\ad.txt', 'utf8')
+let j = fs.readFileSync('D:\\開源-JS-007-4-w-user\\ad.txt', 'utf8')
 let ad = JSON.parse(j)
 
 

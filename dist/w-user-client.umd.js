@@ -1,5 +1,5 @@
 /*!
- * w-user-client v1.0.13
+ * w-user-client v1.0.15
  * (c) 2018-2019 yuda-lyu(semisphere)
  * Released under the MIT License.
  */
