@@ -15,7 +15,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/w-consolelog/dist/w-consolelog.umd.js"></script>
         <script>
-            let logData=window['w-consolelog']
+            console.log = window['w-consolelog']
         </script>
         
         <script>
@@ -26,10 +26,10 @@
                 url: 'http://localhost:8080/api',
                 token: '*',
                 error: function(err) {
-                    logData('client web: error:', err)
+                    console.log('client web: error:', err)
                 },
                 reconn: function() {
-                    logData('client web: reconn')
+                    console.log('client web: reconn')
                 },
             }
 
@@ -38,10 +38,10 @@
 
                 return wo.select(inp)
                     .then(function(msg) {
-                        logData('select then: ', msg)
+                        console.log('select then: ', msg)
                     })
                     .catch(function(err) {
-                        logData('select catch: ', err)
+                        console.log('select catch: ', err)
                     })
 
             }
@@ -51,10 +51,10 @@
 
                 wo.signUp(user)
                     .then(function(msg) {
-                        logData('signUp then: ', msg)
+                        console.log('signUp then: ', msg)
                     })
                     .catch(function(err) {
-                        logData('signUp catch: ', err)
+                        console.log('signUp catch: ', err)
                     })
 
             }
@@ -65,11 +65,11 @@
 
                 await wo.logIn(user)
                     .then(function(msg) {
-                        logData('logIn then: ', msg)
+                        console.log('logIn then: ', msg)
                         token = msg.msg
                     })
                     .catch(function(err) {
-                        logData('logIn catch: ', err)
+                        console.log('logIn catch: ', err)
                     })
 
                 return token
@@ -80,10 +80,10 @@
 
                 return wo.isValidToken(token)
                     .then(function(msg) {
-                        logData('isValidToken then: ', msg.state === 'success', msg)
+                        console.log('isValidToken then: ', msg.state === 'success', msg)
                     })
                     .catch(function(err) {
-                        logData('isValidToken catch: ', err)
+                        console.log('isValidToken catch: ', err)
                     })
 
             }
@@ -93,10 +93,10 @@
 
                 return wo.refreshTokenExp(token)
                     .then(function(msg) {
-                        logData('refreshTokenExp then: ', msg.state === 'success', msg)
+                        console.log('refreshTokenExp then: ', msg.state === 'success', msg)
                     })
                     .catch(function(err) {
-                        logData('refreshTokenExp catch: ', err)
+                        console.log('refreshTokenExp catch: ', err)
                     })
 
             }
@@ -106,10 +106,10 @@
 
                 return wo.logOut(token)
                     .then(function(msg) {
-                        logData('logOut then: ', msg.state === 'success', msg)
+                        console.log('logOut then: ', msg.state === 'success', msg)
                     })
                     .catch(function(err) {
-                        logData('logOut catch: ', err)
+                        console.log('logOut catch: ', err)
                     })
 
             }
@@ -119,10 +119,10 @@
 
                 return wo.changePW(user)
                     .then(function(msg) {
-                        logData('changePW then: ', msg.state === 'success', msg)
+                        console.log('changePW then: ', msg.state === 'success', msg)
                     })
                     .catch(function(err) {
-                        logData('changePW catch: ', err)
+                        console.log('changePW catch: ', err)
                     })
 
             }
@@ -132,10 +132,10 @@
 
                 return wo.resetPW(user)
                     .then(function(msg) {
-                        logData('resetPW then: ', msg.state === 'success', msg)
+                        console.log('resetPW then: ', msg.state === 'success', msg)
                     })
                     .catch(function(err) {
-                        logData('resetPW catch: ', err)
+                        console.log('resetPW catch: ', err)
                     })
 
             }
@@ -145,10 +145,10 @@
 
                 return wo.modifyInfor(inp)
                     .then(function(msg) {
-                        logData('modifyInfor then: ', msg.state === 'success', msg)
+                        console.log('modifyInfor then: ', msg.state === 'success', msg)
                     })
                     .catch(function(err) {
-                        logData('modifyInfor catch: ', err)
+                        console.log('modifyInfor catch: ', err)
                     })
 
             }
@@ -158,7 +158,7 @@
             let WUserClient = window['w-user-client']
             new WUserClient(opt)
                 .then(async function(wo) {
-                    logData('funcs: ', wo)
+                    console.log('funcs: ', wo)
 
                     //使用者之密碼明碼, 記得於前端需先偵測是否8位以上, 且需含英文大小寫與數字, 傳送至伺服器前需先編碼如用sha512, 減少被盜用後直接洩漏明碼
                     let pw1 = 'ABCdef123456'
@@ -256,7 +256,7 @@
 
                 })
                 .catch(function(err) {
-                    logData('client web: catch: ', err)
+                    console.log('client web: catch: ', err)
                 })
 
 
