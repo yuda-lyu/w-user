@@ -5,7 +5,7 @@
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
     "lodash": "^4.17.21",
-    "nodemailer": "^6.6.0",
+    "nodemailer": "^6.4.16",
     "w-comor-hapi": "^1.0.26",
     "w-email": "^1.0.22",
     "w-orm-mongodb": "^1.1.22",
