@@ -1,3 +1,4 @@
+import path from 'path'
 import fs from 'fs'
 import WUserServer from './src/WUserServer.mjs'
 import WOrmMongodb from 'w-orm-mongodb/src/WOrmMongodb.mjs'
@@ -5,7 +6,8 @@ import WOrmReladb from 'w-orm-reladb/src/WOrmReladb.mjs'
 
 
 //ad
-let j = fs.readFileSync('D:\\開源-JS-007-4-w-user\\ad.txt', 'utf8')
+let fp = path.resolve('../', './_data', 'ad.txt')
+let j = fs.readFileSync(fp, 'utf8')
 let ad = JSON.parse(j)
 
 
@@ -94,3 +96,5 @@ async function startServer() {
 
 }
 startServer()
+
+//node --experimental-modules --es-module-specifier-resolution=node srv.mjs

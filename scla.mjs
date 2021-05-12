@@ -1,10 +1,12 @@
+import path from 'path'
+import fs from 'fs'
 import WUserClient from './src/WUserClient.mjs'
 //import WUserClient from './dist/w-user-client.umd.js'
-import fs from 'fs'
 
 
 //data
-let j = fs.readFileSync('D:\\開源-JS-007-4-w-user\\data.txt', 'utf8')
+let fp = path.resolve('../', './_data', 'data.txt')
+let j = fs.readFileSync(fp, 'utf8')
 let data = JSON.parse(j)
 
 
@@ -244,3 +246,5 @@ new WUserClient(opt)
     .catch(function(err) {
         console.log('client nodejs: catch: ', err)
     })
+
+//node --experimental-modules --es-module-specifier-resolution=node scla.mjs

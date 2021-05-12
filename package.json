@@ -4,19 +4,19 @@
   "description": "A simple server for users in nodejs and browser, like a simple SSO.",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
-    "lodash": "^4.17.20",
-    "nodemailer": "^6.4.14",
-    "w-comor-hapi": "^1.0.25",
+    "lodash": "^4.17.21",
+    "nodemailer": "^6.6.0",
+    "w-comor-hapi": "^1.0.26",
     "w-email": "^1.0.22",
-    "w-orm-mongodb": "^1.1.20",
-    "w-orm-reladb": "^1.0.25",
-    "wsemi": "^1.5.33"
+    "w-orm-mongodb": "^1.1.22",
+    "w-orm-reladb": "^1.0.33",
+    "wsemi": "^1.5.77"
   },
   "devDependencies": {
-    "w-package-tools": "^1.0.30"
+    "w-package-tools": "^1.0.54"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --require @babel/register",
+    "test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",
     "deploy": "gh-pages -d docs"
   },
   "repository": {

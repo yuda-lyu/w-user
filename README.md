@@ -19,9 +19,9 @@ To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-
 
 ## Installation
 ### Using npm(ES6 module):
-> **Note:** `w-user-server` depends on `@hapi/hapi`, `events`, `mongodb`, `stream`, `dayjs`, `nodemailer`, `w-comor-hapi`, `w-orm-mongodb` and `w-email`.
+> **Note:** `w-user-server` is mainly dependent on `@hapi/hapi`, `events`, `mongodb`, `stream`, `dayjs`, `nodemailer`, `w-comor-hapi`, `w-orm-mongodb` and `w-email`.
 
-> **Note:** `w-user-client` depends on `axios`.
+> **Note:** `w-user-client` is mainly dependent on `axios`.
 
 ```alias
 npm i w-user
@@ -364,7 +364,7 @@ new WUserClient(opt)
 ```
 
 ### In a browser(UMD module):
-> **Note:** `w-user-client` depends on `axios`.
+> **Note:** `w-user-client` is mainly dependent on `axios`.
 
 [Optional] Add script with nomodule for IE11.
 ```alias
