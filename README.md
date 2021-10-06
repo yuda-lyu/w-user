@@ -3,7 +3,6 @@ A simple server for users in nodejs and browser, like a simple SSO.
 
 ![language](https://img.shields.io/badge/language-JavaScript-orange.svg) 
 [![npm version](http://img.shields.io/npm/v/w-user.svg?style=flat)](https://npmjs.org/package/w-user) 
-[![Build Status](https://travis-ci.org/yuda-lyu/w-user.svg?branch=master)](https://travis-ci.org/yuda-lyu/w-user) 
 [![license](https://img.shields.io/npm/l/w-user.svg?style=flat)](https://npmjs.org/package/w-user) 
 [![gzip file size](http://img.badgesize.io/yuda-lyu/w-user/master/dist/w-user-server.umd.js.svg?compression=gzip)](https://github.com/yuda-lyu/w-user)
 [![npm download](https://img.shields.io/npm/dt/w-user.svg)](https://npmjs.org/package/w-user) 
