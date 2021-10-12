@@ -1,7 +1,7 @@
 {
   "name": "w-user",
   "version": "1.0.19",
-  "description": "A simple server for users in nodejs and browser, like a simple SSO.",
+  "description": "A simple server for users in nodejs and browser.",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
     "lodash": "^4.17.21",

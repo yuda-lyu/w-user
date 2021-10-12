@@ -1,5 +1,5 @@
 # w-user
-A simple server for users in nodejs and browser, like a simple SSO.
+A simple server for users in nodejs and browser.
 
 ![language](https://img.shields.io/badge/language-JavaScript-orange.svg) 
 [![npm version](http://img.shields.io/npm/v/w-user.svg?style=flat)](https://npmjs.org/package/w-user) 
