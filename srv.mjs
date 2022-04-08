@@ -29,7 +29,7 @@ async function startServer() {
 
     //orm
     let orm
-    let ormType = 'sqlite' //mongodb, sqlite
+    let ormType = 'mongodb' //mongodb, sqlite
     let username = 'username'
     let password = 'password'
     let db = 'wuser'
