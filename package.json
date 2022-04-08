@@ -1,19 +1,19 @@
 {
   "name": "w-user",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "A simple server for users in nodejs and browser.",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
     "lodash": "^4.17.21",
-    "nodemailer": "^6.7.2",
-    "w-comor-hapi": "^1.0.30",
-    "w-email": "^1.0.24",
-    "w-orm-mongodb": "^1.1.25",
+    "nodemailer": "^6.7.3",
+    "w-comor-hapi": "^1.0.31",
+    "w-email": "^1.0.25",
+    "w-orm-mongodb": "^1.1.26",
     "w-orm-reladb": "^1.0.36",
-    "wsemi": "^1.6.34"
+    "wsemi": "^1.6.54"
   },
   "devDependencies": {
-    "w-package-tools": "^1.0.59"
+    "w-package-tools": "^1.0.65"
   },
   "scripts": {
     "test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",
