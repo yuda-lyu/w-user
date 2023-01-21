@@ -1,19 +1,18 @@
 {
   "name": "w-user",
-  "version": "1.0.21",
-  "description": "A simple server for users in nodejs and browser.",
+  "version": "1.0.22",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
     "lodash": "^4.17.21",
-    "nodemailer": "^6.7.3",
-    "w-comor-hapi": "^1.0.31",
-    "w-email": "^1.0.25",
-    "w-orm-mongodb": "^1.1.26",
-    "w-orm-reladb": "^1.0.36",
-    "wsemi": "^1.6.54"
+    "nodemailer": "^6.9.0",
+    "w-comor-hapi": "^1.0.32",
+    "w-email": "^1.0.28",
+    "w-orm-mongodb": "^1.1.27",
+    "w-orm-reladb": "^1.0.38",
+    "wsemi": "^1.6.87"
   },
   "devDependencies": {
-    "w-package-tools": "^1.0.65"
+    "w-package-tools": "^1.0.66"
   },
   "scripts": {
     "test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",
@@ -32,9 +31,5 @@
     "browser"
   ],
   "author": "yuda-lyu(semisphere)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yuda-lyu/w-user/issues"
-  },
-  "homepage": "https://github.com/yuda-lyu/w-user#readme"
+  "license": "MIT"
 }
