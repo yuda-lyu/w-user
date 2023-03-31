@@ -14,6 +14,7 @@
     <link type="text/css" rel="stylesheet" href="styles/prettify.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <script src="scripts/nav.js" defer></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -27,7 +28,9 @@
 
 <nav >
     
+    
     <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="WUserClient.html">WUserClient</a></li><li><a href="WUserServer.html">WUserServer</a><ul class='methods'><li data-type='method'><a href="WUserServer.html#.changePW">changePW</a></li><li data-type='method'><a href="WUserServer.html#.isValidToken">isValidToken</a></li><li data-type='method'><a href="WUserServer.html#.logIn">logIn</a></li><li data-type='method'><a href="WUserServer.html#.logOut">logOut</a></li><li data-type='method'><a href="WUserServer.html#.modifyInfor">modifyInfor</a></li><li data-type='method'><a href="WUserServer.html#.refreshTokenExp">refreshTokenExp</a></li><li data-type='method'><a href="WUserServer.html#.resetPW">resetPW</a></li><li data-type='method'><a href="WUserServer.html#.select">select</a></li><li data-type='method'><a href="WUserServer.html#.signUp">signUp</a></li><li data-type='method'><a href="WUserServer.html#~defaultProp">defaultProp</a></li><li data-type='method'><a href="WUserServer.html#~sendEmail">sendEmail</a></li><li data-type='method'><a href="WUserServer.html#~sendEmailByLetter">sendEmailByLetter</a></li><li data-type='method'><a href="WUserServer.html#~verifyProp">verifyProp</a></li></ul></li><li><a href="WUserServer__Private.html">WUserServer::Private</a><ul class='methods'><li data-type='method'><a href="WUserServer__Private.html#.genVerifyHtml">genVerifyHtml</a></li><li data-type='method'><a href="WUserServer__Private.html#.getUserFromToken">getUserFromToken</a></li><li data-type='method'><a href="WUserServer__Private.html#.insert">insert</a></li><li data-type='method'><a href="WUserServer__Private.html#.isExist">isExist</a></li><li data-type='method'><a href="WUserServer__Private.html#.selectOne">selectOne</a></li><li data-type='method'><a href="WUserServer__Private.html#.verifyCheckCode">verifyCheckCode</a></li><li data-type='method'><a href="WUserServer__Private.html#.verifyCheckCodeAndGetHtml">verifyCheckCodeAndGetHtml</a></li><li data-type='method'><a href="WUserServer__Private.html#.verifyTokenExp">verifyTokenExp</a></li></ul></li></ul>
+    
 </nav>
 
 <div id="main">
@@ -45,7 +48,9 @@
 <header>
     
         <h2>
-        WUserClient
+        
+            WUserClient
+        
         </h2>
         
     
@@ -67,6 +72,11 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>建立對使用者Hapi伺服器的客戶端(Node.js與Browser)物件，直接繼承於WComorHapiClient</p>
+<p>Inherit: <a href="https://yuda-lyu.github.io/w-comor-hapi/global.html">WComorHapiClient</a></p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -117,20 +127,13 @@
 
 
 
-<div class="description usertext">
-    <p>建立對使用者Hapi伺服器的客戶端(Node.js與Browser)物件，直接繼承於WComorHapiClient</p>
-<p>Inherit: <a href="https://yuda-lyu.github.io/w-comor-hapi/global.html">WComorHapiClient</a></p>
-</div>
 
 
 
 
 
 
-
-
-
-    <h5>Example</h5>
+    <h5 class="h5-examples">Example</h5>
     
     <pre class="prettyprint"><code>import WUserClient from 'WUserClient/src/w-user-client.mjs'//optlet opt = {    url: 'http://localhost:8080/api',    token: '*',    error: function(err) {        console.log('client nodejs: error:', err)    },    reconn: function() {        console.log('client nodejs: reconn')    },}function testSelect(wo, inp) {    return wo.select(inp)        .then(function(msg) {            console.log('select then: ', msg)        })        .catch(function(err) {            console.log('select catch: ', err)        })}function testSignUp(wo, user) {    wo.signUp(user)        .then(function(msg) {            console.log('signUp then: ', msg)        })        .catch(function(err) {            console.log('signUp catch: ', err)        })}async function testLogIn(wo, user) {    let token = null    await wo.logIn(user)        .then(function(msg) {            console.log('logIn then: ', msg)            token = msg.msg        })        .catch(function(err) {            console.log('logIn catch: ', err)        })    return token}function testIsValidToken(wo, token) {    return wo.isValidToken(token)        .then(function(msg) {            console.log('isValidToken then: ', msg.state === 'success', msg)        })        .catch(function(err) {            console.log('isValidToken catch: ', err)        })}function testRefreshTokenExp(wo, token) {    return wo.refreshTokenExp(token)        .then(function(msg) {            console.log('refreshTokenExp then: ', msg.state === 'success', msg)        })        .catch(function(err) {            console.log('refreshTokenExp catch: ', err)        })}function testLogOut(wo, token) {    return wo.logOut(token)        .then(function(msg) {            console.log('logOut then: ', msg.state === 'success', msg)        })        .catch(function(err) {            console.log('logOut catch: ', err)        })}function testChangePW(wo, user) {    return wo.changePW(user)        .then(function(msg) {            console.log('changePW then: ', msg.state === 'success', msg)        })        .catch(function(err) {            console.log('changePW catch: ', err)        })}function testResetPW(wo, user) {    return wo.resetPW(user)        .then(function(msg) {            console.log('resetPW then: ', msg.state === 'success', msg)        })        .catch(function(err) {            console.log('resetPW catch: ', err)        })}function testModifyInfor(wo, inp) {    return wo.modifyInfor(inp)        .then(function(msg) {            console.log('modifyInfor then: ', msg.state === 'success', msg)        })        .catch(function(err) {            console.log('modifyInfor catch: ', err)        })}//newnew WUserClient(opt)    .then(async function(wo) {        //console.log('funcs: ', wo)        //使用者之密碼明碼, 記得於前端需先偵測是否8位以上, 且需含英文大小寫與數字, 傳送至伺服器前需先編碼如用sha512, 減少被盜用後直接洩漏明碼        let pw1 = 'ABCdef123456'        let pw2 = '123456XYZabc'        let pwEnc = pw1        let pwEncNew = pw2        //user        let user = {            name: 'user',            pwEnc: pwEnc,            email: 'your@email', //change to user's email        }        //token        let token = null        //testMode        let testMode = null        // testMode = 'select'        testMode = 'signUp'        // testMode = 'logIn and logOut'        // testMode = 'changePW'        // testMode = 'resetPW'        // testMode = 'modifyInfor'        //select        if (testMode === 'select') {            token = await testLogIn(wo, user)            let find = {}            await testSelect(wo, { token, find })            await testLogOut(wo, token)        }        //signUp        if (testMode === 'signUp') {            testSignUp(wo, user)        }        //logIn and logOut        if (testMode === 'logIn and logOut') {            token = await testLogIn(wo, user) //get token            await testIsValidToken(wo, token) //true            await testRefreshTokenExp(wo, token) //true            await testLogIn(wo, user) //get the same token, for multiple login            await testLogOut(wo, token) //true            await testIsValidToken(wo, token) //false            await testRefreshTokenExp(wo, token) //false        }        //changePW        if (testMode === 'changePW') {            await testChangePW(wo, { pwEncNew, ...user })        }        //resetPW        if (testMode === 'resetPW') {            await testResetPW(wo, { pwEncNew, ...user })        }        //modifyInfor        if (testMode === 'modifyInfor') {            token = await testLogIn(wo, user) //get token            let userModify = {                id: 'abc',                //email: 'abc@def.com', //can change email                address: 'new city',                abc: 'def', //can not add abc            }            await testModifyInfor(wo, { token, user: userModify })        }    })    .catch(function(err) {        console.log('client nodejs: catch: ', err)    })</code></pre>
 
@@ -191,7 +194,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Sat Jan 21 2023 17:34:53 GMT+0800 (台北標準時間) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Mar 31 2023 16:27:37 GMT+0800 (台北標準時間) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
