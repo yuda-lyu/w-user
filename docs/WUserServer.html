@@ -14,6 +14,7 @@
     <link type="text/css" rel="stylesheet" href="styles/prettify.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <script src="scripts/nav.js" defer></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -27,7 +28,9 @@
 
 <nav >
     
+    
     <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="WUserClient.html">WUserClient</a></li><li><a href="WUserServer.html">WUserServer</a><ul class='methods'><li data-type='method'><a href="WUserServer.html#.changePW">changePW</a></li><li data-type='method'><a href="WUserServer.html#.isValidToken">isValidToken</a></li><li data-type='method'><a href="WUserServer.html#.logIn">logIn</a></li><li data-type='method'><a href="WUserServer.html#.logOut">logOut</a></li><li data-type='method'><a href="WUserServer.html#.modifyInfor">modifyInfor</a></li><li data-type='method'><a href="WUserServer.html#.refreshTokenExp">refreshTokenExp</a></li><li data-type='method'><a href="WUserServer.html#.resetPW">resetPW</a></li><li data-type='method'><a href="WUserServer.html#.select">select</a></li><li data-type='method'><a href="WUserServer.html#.signUp">signUp</a></li><li data-type='method'><a href="WUserServer.html#~defaultProp">defaultProp</a></li><li data-type='method'><a href="WUserServer.html#~sendEmail">sendEmail</a></li><li data-type='method'><a href="WUserServer.html#~sendEmailByLetter">sendEmailByLetter</a></li><li data-type='method'><a href="WUserServer.html#~verifyProp">verifyProp</a></li></ul></li><li><a href="WUserServer__Private.html">WUserServer::Private</a><ul class='methods'><li data-type='method'><a href="WUserServer__Private.html#.genVerifyHtml">genVerifyHtml</a></li><li data-type='method'><a href="WUserServer__Private.html#.getUserFromToken">getUserFromToken</a></li><li data-type='method'><a href="WUserServer__Private.html#.insert">insert</a></li><li data-type='method'><a href="WUserServer__Private.html#.isExist">isExist</a></li><li data-type='method'><a href="WUserServer__Private.html#.selectOne">selectOne</a></li><li data-type='method'><a href="WUserServer__Private.html#.verifyCheckCode">verifyCheckCode</a></li><li data-type='method'><a href="WUserServer__Private.html#.verifyCheckCodeAndGetHtml">verifyCheckCodeAndGetHtml</a></li><li data-type='method'><a href="WUserServer__Private.html#.verifyTokenExp">verifyTokenExp</a></li></ul></li></ul>
+    
 </nav>
 
 <div id="main">
@@ -45,7 +48,9 @@
 <header>
     
         <h2>
-        WUserServer
+        
+            WUserServer
+        
         </h2>
         
     
@@ -67,6 +72,10 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>建立使用者hapi伺服器</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -110,26 +119,20 @@
 
 
 
-<div class="description usertext">
-    <p>建立使用者hapi伺服器</p>
-</div>
 
 
 
 
 
 
-
-
-
-    <h5>Example</h5>
+    <h5 class="h5-examples">Example</h5>
     
     <pre class="prettyprint"><code>import WUserServer from 'WUserServer/src/w-user-server.mjs'//webNamelet webName = 'User management system'// let webName = '使用者管理系統'//webUrllet webUrl = 'https://google.com'//webDescriptionlet webDescription = "Let's do something and make it easier"// let webDescription = '讓我們一起做更簡單的事'//ormlet orm = WOrmMongodb({    url: 'mongodb://username:password@127.0.0.1:27017',    db: 'wuser',    cl: 'users',})//optlet opt = {    orm,    port: 8080,    apiName: 'api',    authUrl: 'http://localhost:8080/auth', //need webUrl+'/'+auth, use 'http://localhost:8080' in test case    salt: 'zLAUfSLDUuausd0Aasu912SDU', //generate it for sites    timeTokenExp: 30,    emSenderName: webName,    emSenderEmail: "sender's email", //email address for email sender    emSenderPW: "sender's password", //password for email sender    webName: webName,    webUrl: webUrl,    webDescription: webDescription,    // emLetterTeamMessage: `${webName}開發團隊 敬上`,    // emLetterDoNotReplayMessage: '本信由系統自動發信，請勿回信',    emLetterLinks: [{ name: 'Google', url: 'https://google.com' }],    // emSignUpTitle: '註冊驗證信',    // emSignUpHtml: `&lt;p>親愛的 {name} 您好：&lt;/p>&lt;p>已收到您的註冊申請，請點擊下方連結進行驗證，確定驗證成功後即可登入。&lt;/p>&lt;p>&lt;a href="{urlCheckCode}" target="_blank">點擊此處驗證&lt;/a>&lt;/p>`,    // emResetPWTitle: '重設密碼驗證信',    // emResetPWHtml: `&lt;p>親愛的 {name} 您好：&lt;/p>&lt;p>已收到您的重設密碼申請，請點擊下方連結進行驗證，確定驗證成功後即可登入。&lt;/p>&lt;p>&lt;a href="{urlCheckCode}" target="_blank">點擊此處驗證&lt;/a>&lt;/p>`,    // verifyWebMsgSuccess: '驗證成功',    // verifyWebMsgExpired: '驗證失敗',    // verifyWebMsgCount: '{s} 秒後自動前往網站',    funcs: {},    routes: [],}//newlet wus = new WUserServer(opt)wus.on('all', function({ eventName, data }) {    console.log('all:' + eventName, ...data)})</code></pre>
 
 
 
 
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -165,6 +168,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -229,6 +233,7 @@
 <span class="param-type">Object</span>
 
 
+
             
             </td>
 
@@ -266,6 +271,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -307,6 +313,7 @@
 <span class="param-type">Integer</span>
 
 
+
             
             </td>
 
@@ -344,6 +351,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -385,6 +393,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -422,6 +431,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -463,6 +473,7 @@
 <span class="param-type">Integer</span>
 
 
+
             
             </td>
 
@@ -500,6 +511,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -541,6 +553,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -578,6 +591,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -619,6 +633,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -658,6 +673,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -691,6 +707,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -732,6 +749,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -769,6 +787,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -810,6 +829,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -847,6 +867,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -888,6 +909,7 @@
 <span class="param-type">Array</span>
 
 
+
             
             </td>
 
@@ -925,6 +947,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -966,6 +989,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -1003,6 +1027,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -1044,6 +1069,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -1081,6 +1107,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -1122,6 +1149,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -1159,6 +1187,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -1200,6 +1229,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -1237,6 +1267,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -1278,6 +1309,7 @@
 <span class="param-type">Object</span>
 
 
+
             
             </td>
 
@@ -1315,6 +1347,7 @@
             
                 
 <span class="param-type">Array</span>
+
 
 
             
@@ -1369,7 +1402,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -1385,6 +1418,7 @@
     <dd>
         
 <span class="param-type">Object</span>
+
 
 
     </dd>
@@ -1420,7 +1454,7 @@
 
     
 
-    <h4 class="name" id=".changePW"><span class="type-signature">(static) </span>changePW<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".changePW"><span class="type-signature type-signature-static">(static) </span>changePW<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -1428,6 +1462,12 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>使用者變更密碼</p>
+<p>1.帳號需為有效(active為activeYes)</p>
+<p>2.帳號需驗證後才能更改密碼</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -1471,11 +1511,6 @@
 
 
 
-<div class="description usertext">
-    <p>使用者變更密碼</p>
-<p>1.帳號需為有效(active為activeYes)</p>
-<p>2.帳號需驗證後才能更改密碼</p>
-</div>
 
 
 
@@ -1484,10 +1519,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -1519,6 +1551,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -1563,6 +1596,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -1584,6 +1618,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -1622,7 +1657,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -1640,6 +1675,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -1652,7 +1688,7 @@
 
     
 
-    <h4 class="name" id=".isValidToken"><span class="type-signature">(static) </span>isValidToken<span class="signature">(token)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".isValidToken"><span class="type-signature type-signature-static">(static) </span>isValidToken<span class="signature">(token)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -1660,6 +1696,11 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>確認使用者token是否有效</p>
+<p>1.確認使用者token是否仍於有效時限內</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -1703,10 +1744,6 @@
 
 
 
-<div class="description usertext">
-    <p>確認使用者token是否有效</p>
-<p>1.確認使用者token是否仍於有效時限內</p>
-</div>
 
 
 
@@ -1715,10 +1752,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -1752,6 +1786,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -1781,7 +1816,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -1799,6 +1834,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -1811,7 +1847,7 @@
 
     
 
-    <h4 class="name" id=".logIn"><span class="type-signature">(static) </span>logIn<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".logIn"><span class="type-signature type-signature-static">(static) </span>logIn<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -1819,6 +1855,15 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>使用者登入</p>
+<p>1.使用者以email與密碼為登入，且帳號需為有效(active為activeYes)</p>
+<p>2.帳號需驗證後才能登入，使用者需先收信驗證</p>
+<p>3.無驗證則重寄驗證信。若使用者忘記點擊或沒收到信，則該email不能再被申請，需由使用者用忘記密碼功能，系統重新寄送驗證信後進行驗證</p>
+<p>4.忘記密碼則重寄驗證信。若使用者登入失敗或忘記密碼，請使用者確認自己email是否正確。若是忘記密碼，則使用忘記密碼功能，系統重新寄送驗證信後進行驗證</p>
+<p>5.支援多點登入。若使用者重複或多點登入時，且token亦於有效時限內，則直接給予當前token而不再另外產生，避免造成前次token失效</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -1862,14 +1907,6 @@
 
 
 
-<div class="description usertext">
-    <p>使用者登入</p>
-<p>1.使用者以email與密碼為登入，且帳號需為有效(active為activeYes)</p>
-<p>2.帳號需驗證後才能登入，使用者需先收信驗證</p>
-<p>3.無驗證則重寄驗證信。若使用者忘記點擊或沒收到信，則該email不能再被申請，需由使用者用忘記密碼功能，系統重新寄送驗證信後進行驗證</p>
-<p>4.忘記密碼則重寄驗證信。若使用者登入失敗或忘記密碼，請使用者確認自己email是否正確。若是忘記密碼，則使用忘記密碼功能，系統重新寄送驗證信後進行驗證</p>
-<p>5.支援多點登入。若使用者重複或多點登入時，且token亦於有效時限內，則直接給予當前token而不再另外產生，避免造成前次token失效</p>
-</div>
 
 
 
@@ -1878,10 +1915,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -1913,6 +1947,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -1957,6 +1992,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -1978,6 +2014,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -2016,7 +2053,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -2034,6 +2071,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -2046,7 +2084,7 @@
 
     
 
-    <h4 class="name" id=".logOut"><span class="type-signature">(static) </span>logOut<span class="signature">(token)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".logOut"><span class="type-signature type-signature-static">(static) </span>logOut<span class="signature">(token)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -2054,6 +2092,11 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>使用者登出</p>
+<p>1.使用者憑token登出</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -2097,10 +2140,6 @@
 
 
 
-<div class="description usertext">
-    <p>使用者登出</p>
-<p>1.使用者憑token登出</p>
-</div>
 
 
 
@@ -2109,10 +2148,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -2146,6 +2182,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -2175,7 +2212,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -2193,6 +2230,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -2205,7 +2243,7 @@
 
     
 
-    <h4 class="name" id=".modifyInfor"><span class="type-signature">(static) </span>modifyInfor<span class="signature">(inp)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".modifyInfor"><span class="type-signature type-signature-static">(static) </span>modifyInfor<span class="signature">(inp)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -2213,6 +2251,10 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>使用者更改自己資料</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -2256,9 +2298,6 @@
 
 
 
-<div class="description usertext">
-    <p>使用者更改自己資料</p>
-</div>
 
 
 
@@ -2267,10 +2306,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -2302,6 +2338,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -2350,6 +2387,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -2383,6 +2421,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -2437,7 +2476,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -2455,6 +2494,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -2467,7 +2507,7 @@
 
     
 
-    <h4 class="name" id=".refreshTokenExp"><span class="type-signature">(static) </span>refreshTokenExp<span class="signature">(token)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".refreshTokenExp"><span class="type-signature type-signature-static">(static) </span>refreshTokenExp<span class="signature">(token)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -2475,6 +2515,11 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>更新使用者token過期時間</p>
+<p>1.token需仍於有效時限內才能刷新</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -2518,10 +2563,6 @@
 
 
 
-<div class="description usertext">
-    <p>更新使用者token過期時間</p>
-<p>1.token需仍於有效時限內才能刷新</p>
-</div>
 
 
 
@@ -2530,10 +2571,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -2567,6 +2605,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -2596,7 +2635,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -2614,6 +2653,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -2626,7 +2666,7 @@
 
     
 
-    <h4 class="name" id=".resetPW"><span class="type-signature">(static) </span>resetPW<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".resetPW"><span class="type-signature type-signature-static">(static) </span>resetPW<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -2634,6 +2674,13 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>使用者重設密碼</p>
+<p>1.帳號需為有效(active為activeYes)</p>
+<p>2.使用者忘記密碼時，可直接設定新密碼並寄送驗證信</p>
+<p>2.帳號不需通過驗證也可申請變更密碼，當使用者申請帳號但忘記收信驗證時，以此可重新設定新密碼並收信驗證</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -2677,12 +2724,6 @@
 
 
 
-<div class="description usertext">
-    <p>使用者重設密碼</p>
-<p>1.帳號需為有效(active為activeYes)</p>
-<p>2.使用者忘記密碼時，可直接設定新密碼並寄送驗證信</p>
-<p>2.帳號不需通過驗證也可申請變更密碼，當使用者申請帳號但忘記收信驗證時，以此可重新設定新密碼並收信驗證</p>
-</div>
 
 
 
@@ -2691,10 +2732,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -2726,6 +2764,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -2770,6 +2809,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -2791,6 +2831,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -2829,7 +2870,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -2847,6 +2888,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -2859,7 +2901,7 @@
 
     
 
-    <h4 class="name" id=".select"><span class="type-signature">(static) </span>select<span class="signature">(inp)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".select"><span class="type-signature type-signature-static">(static) </span>select<span class="signature">(inp)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -2867,6 +2909,10 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>公開用查詢使用者</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -2910,9 +2956,6 @@
 
 
 
-<div class="description usertext">
-    <p>公開用查詢使用者</p>
-</div>
 
 
 
@@ -2921,10 +2964,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -2956,6 +2996,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -3004,6 +3045,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -3037,6 +3079,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -3091,7 +3134,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -3109,6 +3152,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -3121,7 +3165,7 @@
 
     
 
-    <h4 class="name" id=".signUp"><span class="type-signature">(static) </span>signUp<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id=".signUp"><span class="type-signature type-signature-static">(static) </span>signUp<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -3129,6 +3173,14 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>使用者註冊新帳號</p>
+<p>1.使用者用email註冊帳號，且email於全系統唯一不得重複，已申請過不得再被使用</p>
+<p>2.註冊之後，使用者需收信驗證通過，帳號才會有效(active為activeYes)</p>
+<p>3.若使用者忘記點擊或沒收到信，則該email不能再被申請，需由使用者用忘記密碼功能，系統重新寄送驗證信後進行驗證</p>
+<p>4.被停權者(active非activeYes)，需由系統管理員復權</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -3172,13 +3224,6 @@
 
 
 
-<div class="description usertext">
-    <p>使用者註冊新帳號</p>
-<p>1.使用者用email註冊帳號，且email於全系統唯一不得重複，已申請過不得再被使用</p>
-<p>2.註冊之後，使用者需收信驗證通過，帳號才會有效(active為activeYes)</p>
-<p>3.若使用者忘記點擊或沒收到信，則該email不能再被申請，需由使用者用忘記密碼功能，系統重新寄送驗證信後進行驗證</p>
-<p>4.被停權者(active非activeYes)，需由系統管理員復權</p>
-</div>
 
 
 
@@ -3187,10 +3232,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -3222,6 +3264,7 @@
             
                 
 <span class="param-type">Object</span>
+
 
 
             
@@ -3270,6 +3313,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -3305,6 +3349,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -3338,6 +3383,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -3379,6 +3425,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -3418,6 +3465,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -3455,6 +3503,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -3509,7 +3558,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -3527,6 +3576,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -3539,7 +3589,7 @@
 
     
 
-    <h4 class="name" id="~defaultProp"><span class="type-signature">(inner) </span>defaultProp<span class="signature">(u)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="~defaultProp"><span class="type-signature type-signature-inner">(inner) </span>defaultProp<span class="signature">(u)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -3547,6 +3597,10 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>針對使用者資料物件處理，若無給指定欄位，則自動給予預設值</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -3590,9 +3644,6 @@
 
 
 
-<div class="description usertext">
-    <p>針對使用者資料物件處理，若無給指定欄位，則自動給予預設值</p>
-</div>
 
 
 
@@ -3601,10 +3652,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -3638,6 +3686,7 @@
 <span class="param-type">Object</span>
 
 
+
             
             </td>
 
@@ -3667,7 +3716,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -3685,6 +3734,7 @@
 <span class="param-type">Object</span>
 
 
+
     </dd>
 </dl>
 
@@ -3697,7 +3747,7 @@
 
     
 
-    <h4 class="name" id="~sendEmail"><span class="type-signature">(inner) </span>sendEmail<span class="signature">(emTitle, emContent, toEmails, toEmailsCC<span class="signature-attributes">opt</span>, toEmailsBCC<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="~sendEmail"><span class="type-signature type-signature-inner">(inner) </span>sendEmail<span class="signature">(emTitle, emContent, toEmails, toEmailsCC<span class="signature-attributes">opt</span>, toEmailsBCC<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -3705,6 +3755,10 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>寄送email</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -3748,9 +3802,6 @@
 
 
 
-<div class="description usertext">
-    <p>寄送email</p>
-</div>
 
 
 
@@ -3759,10 +3810,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -3800,6 +3848,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -3833,6 +3882,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -3873,6 +3923,7 @@
 <span class="param-type">Array</span>
 
 
+
             
             </td>
 
@@ -3909,6 +3960,7 @@
 |
 
 <span class="param-type">Array</span>
+
 
 
             
@@ -3951,6 +4003,7 @@
 |
 
 <span class="param-type">Array</span>
+
 
 
             
@@ -3998,7 +4051,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -4016,6 +4069,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -4028,7 +4082,7 @@
 
     
 
-    <h4 class="name" id="~sendEmailByLetter"><span class="type-signature">(inner) </span>sendEmailByLetter<span class="signature">(emTitle, emContent, toEmails, toEmailsCC<span class="signature-attributes">opt</span>, toEmailsBCC<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="~sendEmailByLetter"><span class="type-signature type-signature-inner">(inner) </span>sendEmailByLetter<span class="signature">(emTitle, emContent, toEmails, toEmailsCC<span class="signature-attributes">opt</span>, toEmailsBCC<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -4036,6 +4090,10 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>使用模板呈現內文並寄送email</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -4079,9 +4137,6 @@
 
 
 
-<div class="description usertext">
-    <p>使用模板呈現內文並寄送email</p>
-</div>
 
 
 
@@ -4090,10 +4145,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -4131,6 +4183,7 @@
 <span class="param-type">String</span>
 
 
+
             
             </td>
 
@@ -4164,6 +4217,7 @@
             
                 
 <span class="param-type">String</span>
+
 
 
             
@@ -4204,6 +4258,7 @@
 <span class="param-type">Array</span>
 
 
+
             
             </td>
 
@@ -4240,6 +4295,7 @@
 |
 
 <span class="param-type">Array</span>
+
 
 
             
@@ -4282,6 +4338,7 @@
 |
 
 <span class="param-type">Array</span>
+
 
 
             
@@ -4329,7 +4386,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -4347,6 +4404,7 @@
 <span class="param-type">Promise</span>
 
 
+
     </dd>
 </dl>
 
@@ -4359,7 +4417,7 @@
 
     
 
-    <h4 class="name" id="~verifyProp"><span class="type-signature">(inner) </span>verifyProp<span class="signature">(u)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="~verifyProp"><span class="type-signature type-signature-inner">(inner) </span>verifyProp<span class="signature">(u)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -4367,6 +4425,10 @@
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>驗證使用者資料欄位</p></li></ul></dd>
+    
 
     
     <dt class="tag-source">Source:</dt>
@@ -4410,9 +4472,6 @@
 
 
 
-<div class="description usertext">
-    <p>驗證使用者資料欄位</p>
-</div>
 
 
 
@@ -4421,10 +4480,7 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
 <table class="params">
@@ -4458,6 +4514,7 @@
 <span class="param-type">Object</span>
 
 
+
             
             </td>
 
@@ -4487,7 +4544,7 @@
 
 
 
-<h5>Returns:</h5>
+<h5 class="h5-returns">Returns:</h5>
 
         
 <div class="param-desc">
@@ -4503,6 +4560,7 @@
     <dd>
         
 <span class="param-type">Object</span>
+
 
 
     </dd>
@@ -4532,7 +4590,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Sat Jan 21 2023 17:34:53 GMT+0800 (台北標準時間) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Mar 31 2023 16:27:37 GMT+0800 (台北標準時間) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

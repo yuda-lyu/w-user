@@ -1,18 +1,18 @@
 {
   "name": "w-user",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "main": "dist/w-user-server.umd.js",
   "dependencies": {
     "lodash": "^4.17.21",
-    "nodemailer": "^6.9.0",
-    "w-comor-hapi": "^1.0.32",
-    "w-email": "^1.0.28",
-    "w-orm-mongodb": "^1.1.27",
-    "w-orm-reladb": "^1.0.38",
-    "wsemi": "^1.6.87"
+    "nodemailer": "^6.9.1",
+    "w-comor-hapi": "^1.0.33",
+    "w-email": "^1.0.30",
+    "w-orm-mongodb": "^1.1.29",
+    "w-orm-reladb": "^1.0.39",
+    "wsemi": "^1.7.2"
   },
   "devDependencies": {
-    "w-package-tools": "^1.0.66"
+    "w-package-tools": "^1.0.69"
   },
   "scripts": {
     "test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",
