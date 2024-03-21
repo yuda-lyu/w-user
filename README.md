@@ -5,7 +5,8 @@ A simple server for users in nodejs and browser.
 [![npm version](http://img.shields.io/npm/v/w-user.svg?style=flat)](https://npmjs.org/package/w-user) 
 [![license](https://img.shields.io/npm/l/w-user.svg?style=flat)](https://npmjs.org/package/w-user) 
 [![gzip file size](http://img.badgesize.io/yuda-lyu/w-user/master/dist/w-user-server.umd.js.svg?compression=gzip)](https://github.com/yuda-lyu/w-user)
-[![npm download](https://img.shields.io/npm/dt/w-user.svg)](https://npmjs.org/package/w-user) 
+[![npm download](https://img.shields.io/npm/dt/w-user.svg)](https://npmjs.org/package/w-user)
+[![npm download](https://img.shields.io/npm/dm/w-user.svg)](https://npmjs.org/package/w-user) 
 [![jsdelivr download](https://img.shields.io/jsdelivr/npm/hm/w-user.svg)](https://www.jsdelivr.com/package/npm/w-user)
 
 ## Documentation
@@ -375,7 +376,7 @@ new WUserClient(opt)
 ```
 [Necessary] Add script for w-user-client.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-user@1.0.23/dist/w-user-client.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-user@1.0.24/dist/w-user-client.umd.js"></script>
 ```
 #### Example for w-user-client:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-user/blob/master/web.html)]
