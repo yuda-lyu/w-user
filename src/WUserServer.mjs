@@ -1,12 +1,12 @@
 import events from 'events' //rollup編譯時得剔除events
-import cloneDeep from 'lodash-es/cloneDeep'
-import each from 'lodash-es/each'
-import map from 'lodash-es/map'
-import get from 'lodash-es/get'
-import concat from 'lodash-es/concat'
-import join from 'lodash-es/join'
-//import wrap from 'lodash-es/wrap'
-import pick from 'lodash-es/pick'
+import cloneDeep from 'lodash-es/cloneDeep.js'
+import each from 'lodash-es/each.js'
+import map from 'lodash-es/map.js'
+import get from 'lodash-es/get.js'
+import concat from 'lodash-es/concat.js'
+import join from 'lodash-es/join.js'
+//import wrap from 'lodash-es/wrap.js'
+import pick from 'lodash-es/pick.js'
 import dayjs from 'dayjs' //rollup編譯時得剔除dayjs
 import genPm from 'wsemi/src/genPm.mjs'
 import genID from 'wsemi/src/genID.mjs'
@@ -48,7 +48,7 @@ function fromStrDate(c) {
 function getSuccess(msg = null) {
     return {
         state: 'success',
-        msg: msg,
+        msg,
     }
 }
 
@@ -56,7 +56,7 @@ function getSuccess(msg = null) {
 function getError(msg = null) {
     return {
         state: 'error',
-        msg: msg,
+        msg,
     }
 }
 
@@ -158,9 +158,9 @@ let defExclude = ['<', '>']
  *     emSenderEmail: "sender's email", //email address for email sender
  *     emSenderPW: "sender's password", //password for email sender
  *
- *     webName: webName,
- *     webUrl: webUrl,
- *     webDescription: webDescription,
+ *     webName,
+ *     webUrl,
+ *     webDescription,
  *
  *     // emLetterTeamMessage: `${webName}開發團隊 敬上`,
  *     // emLetterDoNotReplayMessage: '本信由系統自動發信，請勿回信',
@@ -776,7 +776,7 @@ function WUserServer(opt = {}) {
 
         //cehck
         if (r.state === 'error') {
-            console.log('signUp catch:', r.msg, 'emailObj:', { name: user.name, urlCheckCode: urlCheckCode, email: user.email })
+            console.log('signUp catch:', r.msg, 'emailObj:', { name: user.name, urlCheckCode, email: user.email })
             pm.reject('can not send email')
             return pm
         }
@@ -1009,7 +1009,7 @@ function WUserServer(opt = {}) {
 
         verifyCheckCode(checkCode)
             .then(function(msg) {
-                eeEmit('verifyCheckCodeAndGetHtml', { state: 'success', msg: msg, checkCode })
+                eeEmit('verifyCheckCodeAndGetHtml', { state: 'success', msg, checkCode })
                 pm.resolve(genVerifyHtml(msg, 'true', rdCountdownMessage))
             })
             .catch(function(err) {
@@ -1346,7 +1346,7 @@ function WUserServer(opt = {}) {
 
         //cehck
         if (r.state === 'error') {
-            console.log('resetPW catch:', r.msg, 'emailObj:', { name: user.name, urlCheckCode: urlCheckCode, email: user.email })
+            console.log('resetPW catch:', r.msg, 'emailObj:', { name: user.name, urlCheckCode, email: user.email })
             pm.reject('can not send email')
             return pm
         }

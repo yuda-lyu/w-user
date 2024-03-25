@@ -87,9 +87,9 @@ async function startServer() {
         emSenderEmail: ad.srcEmail, //email address for email sender
         emSenderPW: ad.srcPW, //password for email sender
 
-        webName: webName,
-        webUrl: webUrl,
-        webDescription: webDescription,
+        webName,
+        webUrl,
+        webDescription,
 
         // emLetterTeamMessage: `${webName}開發團隊 敬上`,
         // emLetterDoNotReplayMessage: '本信由系統自動發信，請勿回信',
@@ -272,7 +272,7 @@ new WUserClient(opt)
         //user
         let user = {
             name: 'user',
-            pwEnc: pwEnc,
+            pwEnc,
             email: 'your@email', //change to user's email
         }
 
@@ -376,7 +376,7 @@ new WUserClient(opt)
 ```
 [Necessary] Add script for w-user-client.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-user@1.0.24/dist/w-user-client.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-user@1.0.25/dist/w-user-client.umd.js"></script>
 ```
 #### Example for w-user-client:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-user/blob/master/web.html)]
@@ -532,7 +532,7 @@ new WUserClient(opt)
         //user
         let user = {
             name: 'user',
-            pwEnc: pwEnc,
+            pwEnc,
             email: 'your@email', //change to user's email
         }
 

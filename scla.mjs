@@ -157,7 +157,7 @@ new WUserClient(opt)
         //user
         let user = {
             name: 'user',
-            pwEnc: pwEnc,
+            pwEnc,
             email: data.testEmail, //change to user's email
         }
 

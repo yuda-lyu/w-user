@@ -66,9 +66,9 @@ async function startServer() {
         emSenderEmail: ad.srcEmail, //email address for email sender
         emSenderPW: ad.srcPW, //password for email sender
 
-        webName: webName,
-        webUrl: webUrl,
-        webDescription: webDescription,
+        webName,
+        webUrl,
+        webDescription,
 
         // emLetterTeamMessage: `${webName}開發團隊 敬上`,
         // emLetterDoNotReplayMessage: '本信由系統自動發信，請勿回信',

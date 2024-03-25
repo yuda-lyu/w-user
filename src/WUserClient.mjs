@@ -161,7 +161,7 @@ import WComorHapiClient from 'w-comor-hapi/src/WComorHapiClient.mjs'
  *         //user
  *         let user = {
  *             name: 'user',
- *             pwEnc: pwEnc,
+ *             pwEnc,
  *             email: 'your@email', //change to user's email
  *         }
  *
